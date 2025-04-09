@@ -87,7 +87,7 @@ app.use('/payments', paymentRoutes);
 
 // server
 const startServer = async () => {
-  await createTables();  // tables
+   // await createTables();  // tables
   
   app.listen(process.env.PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${process.env.PORT}`);
