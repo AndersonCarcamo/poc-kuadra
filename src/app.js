@@ -59,6 +59,34 @@ const swaggerOptions = {
             method: { type: 'string' },
             reservation_id: { type: 'integer' }
           }
+        },
+        Parking: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer' },
+            name: { type: 'string' },
+            location: { type: 'string' },
+            owner_id: { type: 'integer' }
+          }
+        },
+        Vehicle: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer' },
+            user_id: { type: 'integer' },
+            plate_number: { type: 'string' },
+            model: { type: 'string' },
+            color: { type: 'string' }
+          }
+        },
+        DigitalTicket: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer' },
+            reservation_id: { type: 'integer' },
+            vehicle_id: { type: 'integer' },
+            qr_code: { type: 'string' }
+          }
         }
       },
       securitySchemes: {
