@@ -6,9 +6,14 @@ const swaggerUi = require('swagger-ui-express');
 const createTables = require('./models/tables');
 const pool = require('./config/db');
 
+
+
 // routes
 const spacesRoutes = require('./routes/spaces');
 const paymentRoutes = require('./routes/payment');
+const parkingsRoutes = require('./routes/parkings');
+const vehiclesRoutes = require('./routes/vehicles');
+const digitalTicketRoutes = require('./routes/digitalTicket');
 
 const app = express();
 
@@ -84,10 +89,13 @@ app.use(express.json());
 // routes to endpoints 
 app.use('/spaces', spacesRoutes);
 app.use('/payments', paymentRoutes);
+app.use('/parkings', parkingsRoutes);
+app.use('/vehicles', vehiclesRoutes);
+app.use('/digitalTicket', digitalTicketRoutes);
 
 // server
 const startServer = async () => {
-   // await createTables();  // tables
+  //  await createTables();  // tables
   
   app.listen(process.env.PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${process.env.PORT}`);
