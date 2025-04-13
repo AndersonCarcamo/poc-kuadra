@@ -14,8 +14,8 @@ const paymentRoutes = require('./routes/payment');
 const parkingsRoutes = require('./routes/parkings');
 const vehiclesRoutes = require('./routes/vehicles');
 const digitalTicketRoutes = require('./routes/digitalTicket');
-const notificationRoutes = require('./routes/notification')
-
+const notificationRoutes = require('./routes/notification');
+const reservationRoutes = require('./routes/reservation');
 const app = express();
 
 const swaggerOptions = {
@@ -161,6 +161,7 @@ app.use('/parkings', parkingsRoutes);
 app.use('/vehicles', vehiclesRoutes);
 app.use('/digitalTicket', digitalTicketRoutes);
 app.use('/notifications',notificationRoutes)
+app.use('/reservation',reservationRoutes)
 
 // server
 const startServer = async () => {
