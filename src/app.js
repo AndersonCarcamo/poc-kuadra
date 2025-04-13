@@ -14,6 +14,7 @@ const paymentRoutes = require('./routes/payment');
 const parkingsRoutes = require('./routes/parkings');
 const vehiclesRoutes = require('./routes/vehicles');
 const digitalTicketRoutes = require('./routes/digitalTicket');
+const notificationRoutes = require('./routes/notification')
 
 const app = express();
 
@@ -30,6 +31,32 @@ const swaggerOptions = {
       },
       servers: [{ url: `http://localhost:${process.env.PORT}`, description: 'Servidor local' }]
     },
+    tags: [
+      {
+        name: 'Spaces',
+        description: 'Operaciones relacionadas con espacios de estacionamiento'
+      },
+      {
+        name: 'Payments',
+        description: 'Operaciones relacionadas con pagos'
+      },
+      {
+        name: 'Parkings',
+        description: 'Operaciones relacionadas con estacionamientos'
+      },
+      {
+        name: 'Vehicles',
+        description: 'Operaciones relacionadas con vehículos'
+      },
+      {
+        name: 'DigitalTickets',
+        description: 'Operaciones relacionadas con tickets digitales'
+      },
+      {
+        name: 'Notifications',
+        description: 'Operaciones relacionadas con notificaciones'
+      }
+    ],
     components: {
       schemas: {
         Spaces: {
@@ -87,18 +114,31 @@ const swaggerOptions = {
             vehicle_id: { type: 'integer' },
             qr_code: { type: 'string' }
           }
+        },
+        Notification: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer' },
+            user_id: { type: 'integer' },
+            reservation_id: { type: 'integer', nullable: true },
+            message: { type: 'string' },
+          },
+          required: ['user_id', 'message']
         }
+        
       },
-      securitySchemes: {
-        BearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT'
-        }
-      }
+
+  
+      // securitySchemes: {
+      //   BearerAuth: {
+      //     type: 'http',
+      //     scheme: 'bearer',
+      //     bearerFormat: 'JWT'
+      //   }
+      // }
     }
   },
-  apis: ['./routes/*.js'] 
+  apis: ['./src/routes/*.js'] 
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -120,6 +160,7 @@ app.use('/payments', paymentRoutes);
 app.use('/parkings', parkingsRoutes);
 app.use('/vehicles', vehiclesRoutes);
 app.use('/digitalTicket', digitalTicketRoutes);
+app.use('/notifications',notificationRoutes)
 
 // server
 const startServer = async () => {

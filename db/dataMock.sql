@@ -59,3 +59,45 @@ INSERT INTO payments (user_id, owner_id, reservation_id, amount, method, status)
 VALUES 
 (4, 2, 2, 12.00, 'tarjeta', 'completado'),
 (5, 2, 3, 15.00, 'yape', 'completado');
+
+INSERT INTO notifications (user_id, reservation_id, message)
+VALUES 
+(3, 1, 'Tu reserva está pendiente de pago. Por favor completa el pago para confirmar.');
+
+INSERT INTO notifications (user_id, reservation_id, message)
+VALUES 
+(4, 2, 'Tu reserva ha sido confirmada. Tu código de acceso ya está disponible.');
+
+INSERT INTO notifications (user_id, reservation_id, message)
+VALUES 
+(4, 2, 'Se ha generado tu ticket digital. Puedes acceder a él desde "Mis tickets".');
+
+INSERT INTO notifications (user_id, reservation_id, message)
+VALUES 
+(4, 2, 'Se ha registrado tu pago de $12.00 por tu reserva en Espacio A2.');
+
+INSERT INTO notifications (user_id, reservation_id, message)
+VALUES 
+(5, 3, 'Tu reserva está en curso. Finaliza a las 09:30.');
+
+INSERT INTO notifications (user_id, reservation_id, message)
+VALUES 
+(5, 3, 'Se ha registrado tu pago de $15.00 por tu reserva en Espacio B1.');
+
+INSERT INTO notifications (user_id, message)
+VALUES 
+(1, 'Has recibido una nueva reserva en tu estacionamiento Cochera Miraflores.');
+
+INSERT INTO notifications (user_id, message)
+VALUES 
+(2, 'Has recibido dos nuevas reservas en tu estacionamiento.');
+
+INSERT INTO notifications (user_id, message)
+VALUES 
+(2, 'Los pagos del mes han sido procesados. Puedes revisarlos en tu panel de control.');
+
+INSERT INTO notifications (user_id, message)
+VALUES 
+(3, '¡Oferta especial! 20% de descuento en reservas para el fin de semana.'),
+(4, '¡Oferta especial! 20% de descuento en reservas para el fin de semana.'),
+(5, '¡Oferta especial! 20% de descuento en reservas para el fin de semana.');
